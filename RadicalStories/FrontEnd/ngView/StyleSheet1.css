@@ -1,0 +1,12 @@
+﻿body {
+    background: #000000 url(http://wallpoper.com/images/00/37/59/14/yin-yang_00375914.jpg) no-repeat fixed;
+    background-size: 100%;
+    font: Caladea, serif;
+    color: #c4c3c3;
+}
+.container {
+    background: rgba(0, 0, 0, 0.6);
+}
+a {
+    color: white;
+}

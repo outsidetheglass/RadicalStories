@@ -1,0 +1,15 @@
+﻿
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Categories Page</h1>
+        </div>
+    </div>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3" ng-repeat="cate in vm.categories">
+
+        <h2>Character: <b>{{cate.symbol}}</b></h2>
+        <br />Pronunciation: {{cate.pinyin}}
+        <br />Radicals: {{cate.radicals}}
+        <br />Formation: {{cate.formation}}
+    </div>
+</div>

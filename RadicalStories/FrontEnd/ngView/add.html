@@ -1,0 +1,16 @@
+﻿<h1>Character Add Page</h1>
+
+<form novalidate ng-submit="vm.addCharacter()" name="characterForm">
+    <div>
+        <label>
+            Character: <input ng-model="vm.characterToAdd.symbol" required />
+        </label>
+    </div>
+    <div>
+        <label>
+            Radicals: <input ng-model="vm.characterToAdd.radicals" required />
+        </label>
+    </div>
+
+    <input type="submit" value="Add New Character" ng-disabled="characterForm.$invalid" />
+</form>
