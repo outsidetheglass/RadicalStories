@@ -75,3 +75,5 @@ c:\users\stevie\documents\visual studio 2015\Projects\RadicalStories\RadicalStor
 c:\users\stevie\documents\visual studio 2015\Projects\RadicalStories\RadicalStories\obj\Debug\RadicalStories.csprojResolveAssemblyReference.cache
 c:\users\stevie\documents\visual studio 2015\Projects\RadicalStories\RadicalStories\obj\Debug\RadicalStories.dll
 c:\users\stevie\documents\visual studio 2015\Projects\RadicalStories\RadicalStories\obj\Debug\RadicalStories.pdb
+C:\Users\Stevie\Documents\Visual Studio 2015\Projects\RadicalStories\RadicalStories\obj\Debug\RadicalStories.Migrations.initMigrate.resources
+C:\Users\Stevie\Documents\Visual Studio 2015\Projects\RadicalStories\RadicalStories\obj\Debug\RadicalStories.csproj.GenerateResource.Cache

@@ -16,10 +16,12 @@ namespace RadicalStories.API
             new Character {Id = 2, Pinyin = "mù", Symbol = "木", Radicals =  "木", Formation = "Pictograph - Picture of a tree with branches above ground and roots in the bottom" },
             new Character {Id = 3, Pinyin = "lín", Symbol = "林", Radicals = "木木", Formation = "Pictograph - Two pictures of a tree with branches above ground and roots in the bottom." }
         };
-        // GET: api/Characters
+
+        private ApplicationDbContext _db = new ApplicationDbContext();
+
         public IEnumerable<Character> Get()
         {
-            return _character;
+            return _db.Characters.ToList();
         }
 
         // GET: api/Characters/5
