@@ -1,1 +1,32 @@
-﻿
+﻿<html ng-app="MyApp">
+<head>
+    <base href="/" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/FrontEnd/ngView/StyleSheet1.css" rel="stylesheet" />
+</head>
+<body ng-controller="AccountController as account">
+    <ul class="container nav nav-tabs">
+        <li><a href="/index">Home</a></li>
+        <li><a href="/categories">Categories</a></li>
+        <li><a href="/add" ng-show="account.getClaim('CanAddCharacters')">Add</a></li>
+        <li><a href="/login" ng-show="!account.isLoggedIn()">Login</a></li>
+        <li><a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a></li>
+    </ul>
+
+    <div ng-view class="ngViewContainer"></div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-animate.min.js"></script>
+    <script src="~/FrontEnd/JS/Controllers/animationsCtrl.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
+    <script src="~/Scripts/angular-resource.min.js"></script>
+    <script src="~/FrontEnd/JS/app.js"></script>
+    <script src="~/FrontEnd/JS/Controllers/accountController.js"></script>
+    <script src="~/FrontEnd/JS/Services/accountService.js"></script>
+    <script src="~/FrontEnd/JS/Services/RadicalService.js"></script>
+    <script src="~/FrontEnd/JS/Controllers/MainController.js"></script>
+    <script src="~/FrontEnd/JS/Controllers/controllers.js"></script>
+
+</body>
+</html>

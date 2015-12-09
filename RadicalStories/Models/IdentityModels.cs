@@ -21,6 +21,7 @@ namespace RadicalStories.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public IDbSet<Category> Categories { get; set; }
         public IDbSet<Character> Characters { get; set; }
 
         public ApplicationDbContext()

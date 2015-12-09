@@ -1,0 +1,30 @@
+﻿<h1>Character Edit Page</h1>
+<form ng-submit="vm.editChar()">
+
+    <div>
+        <label> Character:</label>
+        <input ng-model="vm.charToEdit.symbol" />
+    </div>
+    <div>
+        <label>Radicals:</label>
+        <input ng-model="vm.charToEdit.radicals" />
+    </div>
+    <div>
+        <label>
+            Pronunciation:
+        </label><input ng-model="vm.charToEdit.pinyin" />
+        
+    </div>
+    <div>
+        <label>
+            Meaning: <input ng-model="vm.charToEdit.meaning" />
+        </label>
+    </div>
+    <div>
+        <label>
+            Formation: <input ng-model="vm.charToEdit.formation" />
+        </label>
+    </div>
+    <input type="submit" value="Save Edit" />
+
+</form>

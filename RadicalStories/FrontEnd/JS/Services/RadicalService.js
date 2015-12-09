@@ -9,9 +9,15 @@ var MyApp;
             RadicalService.prototype.getCharacters = function () {
                 return this.categoryInfo.query();
             };
+            RadicalService.prototype.get = function (id) {
+                return this.categoryInfo.get({ id: id });
+            };
             RadicalService.prototype.save = function (character) {
                 console.log(character);
                 return this.categoryInfo.save(character).$promise;
+            };
+            RadicalService.prototype.delete = function (id) {
+                return this.categoryInfo.delete({ id: id }).$promise;
             };
             return RadicalService;
         })();

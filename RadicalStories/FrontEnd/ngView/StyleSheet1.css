@@ -4,9 +4,85 @@
     font: Caladea, serif;
     color: #c4c3c3;
 }
+
+legend {
+    color: white;
+}
+
+.nav {
+    width: 32%;
+}
+
 .container {
     background: rgba(0, 0, 0, 0.6);
+    margin: 10px;
+    border-radius: 13px;
+}
+
+.ngEmailInvalid.ng-invalid-add {
+    webkit-transition: 1s linear all;
+    transition: 1s linear all;
+    background: white;
+}
+
+.ngEmailInvalid.ng-invalid {
+    background: red;
+}
+
+.ngEmailInvalid.ng-invalid-add-active {
+    background: red;
+}
+.ngPasswordInvalid.ng-invalid-add {
+    webkit-transition: 1s linear all;
+    transition: 1s linear all;
+    background: white;
+}
+
+.ngPasswordInvalid.ng-invalid {
+    background: red;
+}
+
+.ngPasswordInvalid.ng-invalid-add-active {
+    background: red;
 }
 a {
     color: white;
 }
+
+.ngViewRelative {
+    position: relative;
+    padding: 10px;
+    height: 300px;
+}
+
+.ngViewContainer {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    border-radius: 13px;
+    width: 800px;
+    display: block;
+    left: 10%;
+    text-align: center;
+}
+
+    .ngViewContainer.ng-enter, .ngViewContainer.ng-leave {
+        -webkit-transition: 600ms linear all;
+        transition: 600ms linear all;
+    }
+
+    .ngViewContainer.ng-enter {
+        transform: translateX(500px);
+    }
+
+    .ngViewContainer.ng-enter-active {
+        transform: translateX(0px);
+    }
+
+    .ngViewContainer.ng-leave {
+        transform: translateX(0px);
+    }
+
+    .ngViewContainer.ng-leave-active {
+        transform: translateX(-1000px);
+    }

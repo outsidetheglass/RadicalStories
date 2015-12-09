@@ -21,7 +21,7 @@ namespace RadicalStories
 
             routes.MapRoute(
                  name: "Application",
-                 url: "{*url}",
+                 url: "{*path}",
                  defaults: new { controller = "Home", action = "Index" }
             );
         }

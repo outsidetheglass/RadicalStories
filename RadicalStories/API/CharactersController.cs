@@ -4,61 +4,57 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Web.Http;
 
-namespace RadicalStories.API
-{
-    public class CharactersController : ApiController
-    {
-        private static List<Character> _character = new List<Character>
-        {
-            new Character { Id=1, Pinyin = "yī", Symbol = "一", Radicals = "一", Formation = "Ideograph - representing heaven (天), horizon (旦), or a bar", },
-            new Character {Id = 2, Pinyin = "mù", Symbol = "木", Radicals =  "木", Formation = "Pictograph - Picture of a tree with branches above ground and roots in the bottom" },
-            new Character {Id = 3, Pinyin = "lín", Symbol = "林", Radicals = "木木", Formation = "Pictograph - Two pictures of a tree with branches above ground and roots in the bottom." }
-        };
-
-        private ApplicationDbContext _db = new ApplicationDbContext();
-
-        public IEnumerable<Character> Get()
-        {
-            return _db.Characters.ToList();
+namespace RadicalStories.API {
+    public class CharactersController : ApiController {
+        private IRepository _repo;
+        public CharactersController(IRepository repo) {
+            this._repo = repo;
+        }
+        public IEnumerable<Character> Get() {
+            var characters = _repo.ListCharacters();
+            return characters;
         }
 
-        // GET: api/Characters/5
-        public IHttpActionResult Get(int id)
-        {
-            var match = _character.Where(p => p.Id == id).FirstOrDefault();
-            if (match == null)
-            {
+        public IHttpActionResult Get(int id) {
+            var match = _repo.Find(id);
+            if (match == null) {
                 return NotFound();
             }
             return Ok(match);
         }
 
         // POST: api/Characters
-        public IHttpActionResult Post(Character character)
-        {
-            if (!ModelState.IsValid)
-            {
+        [Authorize]
+        public IHttpActionResult Post(Character character) {
+            if (!ModelState.IsValid) {
                 return BadRequest(this.ModelState);
             }
-            _character.Add(character);
-            return Created("api/character/" + character.Id, character);
-        }
-        // DELETE: api/Characters/5
-        public void Delete(int id)
-        {
-        }
-        [HttpGet]
-        [Route("api/categories/search/{searchString}")]
-        public IHttpActionResult Search(string searchString)
-        {
-            if (string.IsNullOrWhiteSpace(searchString))
-            {
-                return BadRequest("Empty search, oh nooo!");
+
+            var user = this.User as ClaimsPrincipal;
+            if (user.HasClaim("CanAddCharacters", "true")) {
+                _repo.SaveChar(character);
+                return Created("", character);
             }
-            var results = _character.Where(p => p.Symbol.Contains(searchString));
-            return Ok(results);
+            else { return Unauthorized(); }
         }
+        
+        // DELETE: api/Characters/5
+        public IHttpActionResult Delete(int id) {
+            _repo.Delete(id);
+            return Ok();
+        }
+        //[HttpGet]
+        //[Route("api/categories/search/{searchString}")]
+        //public IHttpActionResult Search(string searchString)
+        //{
+        //    if (string.IsNullOrWhiteSpace(searchString)) {
+        //        return BadRequest("Empty search, oh nooo!");
+        //    }
+        //    var results = _repo.Characters.Where(p => p.Symbol.Contains(searchString));
+        //    return Ok(results);
+        //}
     }
 }

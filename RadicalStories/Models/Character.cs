@@ -16,6 +16,6 @@ namespace RadicalStories.Models
         public string Symbol { get; set; }
         public string Radicals { get; set; }
         public string Formation { get; set; }
-        public string Story { get; set; }
+        public string Meaning { get; set; }
     }
 }

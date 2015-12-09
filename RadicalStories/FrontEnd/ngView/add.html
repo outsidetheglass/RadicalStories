@@ -1,19 +1,37 @@
-﻿<h1>Character Add Page</h1>
+﻿<div ng-show="account.getClaim('CanAddCharacters')">
+    <h1>Character Add Page</h1>
 
-<form novalidate ng-submit="vm.addCharacter()" name="characterForm">
-    <div>
-        <label>
-            Character: <input ng-model="vm.characterToAdd.symbol" required />
-        </label>
-    </div>
-    <div>
-        <label>
-            Radicals: <input ng-model="vm.characterToAdd.radicals" required />
-        </label>
-    </div>
-    <div>
+    <form novalidate ng-submit="vm.addCharacter()" name="characterForm">
+        <div>
+            <label>
+                Character: <input ng-model="vm.characterToAdd.symbol" required />
+            </label>
+        </div>
+        <div>
+            <label>
+                Radicals: <input ng-model="vm.characterToAdd.radicals" required />
+            </label>
+        </div>
+        <div>
+            <label>
+                Pronunciation: <input ng-model="vm.characterToAdd.pinyin" required />
+            </label>
+        </div>
+        <div>
+            <label>
+                Meaning: <input ng-model="vm.characterToAdd.meaning" required />
+            </label>
+        </div>
+        <div>
+            <label>
+                Formation: <input ng-model="vm.characterToAdd.formation" />
+            </label>
+        </div>
+        <div>
 
-    </div>
+        </div>
 
-    <input type="submit" value="Add New Character" ng-disabled="characterForm.$invalid" />
-</form>
+        <input type="submit" value="Add New Character" ng-disabled="characterForm.$invalid" />
+    </form>
+</div>
+<h1 ng-show="!account.getClaim('CanAddCharacters')">What are you doing here if you can't add characters?</h1>
