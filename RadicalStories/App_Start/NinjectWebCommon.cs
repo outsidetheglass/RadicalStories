@@ -12,7 +12,8 @@ namespace RadicalStories.App_Start
     using Ninject.Web.Common;
     using Models;
     using Microsoft.Owin.Logging;
-
+    using Services;
+    using GenRep;
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -64,6 +65,8 @@ namespace RadicalStories.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IRepository>().To<EFRepository>();
+            kernel.Bind<IGenericRepository>().To<GenericRepository>();
+            kernel.Bind<ICharacterServices>().To<CharacterServices>();
         }
     }
 }

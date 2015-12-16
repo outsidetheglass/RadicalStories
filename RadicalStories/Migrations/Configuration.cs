@@ -1,5 +1,4 @@
-﻿namespace RadicalStories.Migrations
-{
+﻿namespace RadicalStories.Migrations {
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
@@ -8,36 +7,233 @@
     using System.Data.Entity.Migrations;
     using System.Linq;
     using System.Security.Claims;
-
-    internal sealed class Configuration : DbMigrationsConfiguration<RadicalStories.Models.ApplicationDbContext>
-    {
-        public Configuration()
-        {
+    using System.Web.Http;
+    internal sealed class Configuration : DbMigrationsConfiguration<RadicalStories.Models.ApplicationDbContext> {
+        public Configuration() {
             AutomaticMigrationsEnabled = false;
         }
+        protected override void Seed(RadicalStories.Models.ApplicationDbContext context) {
+            var radicals = new Radical[]
+            {
+                 new Radical { Symbol = "一" , Pinyin = "yi1" , Meaning = "one" , StrokesNum = 1 },
+ new Radical { Symbol = "丨" , Pinyin = "gun3" , Meaning = "line" , StrokesNum = 1 },
+ new Radical { Symbol = "丶" , Pinyin = "zhu3" , Meaning = "dot" , StrokesNum = 1 },
+ new Radical { Symbol = "丿", SymbolVariations = ",乀, 乁" , Pinyin = "(fu2), (yi2), (pie1)" , Meaning = "slash" , StrokesNum = 1 },
+ new Radical { Symbol = "乙" , SymbolVariations =",乛, 乚", Pinyin = "yi4,(yin3)" , Meaning = "second" , StrokesNum = 1 },
+ new Radical { Symbol = "亅" , Pinyin = "jue2" , Meaning = "hook" , StrokesNum = 1 },
+ new Radical { Symbol = "二" , Pinyin = "er4" , Meaning = "two" , StrokesNum = 2 },
+ new Radical { Symbol = "亠" , Pinyin = "tou2" , Meaning = "lid" , StrokesNum = 2 },
+ new Radical { Symbol = "人" , SymbolVariations =",亻", Pinyin = "ren2" , Meaning = "man" , StrokesNum = 2 },
+ new Radical { Symbol = "儿" , Pinyin = "ren2" , Meaning = "legs" , StrokesNum = 2 },
+ new Radical { Symbol = "入" , Pinyin = "ru4" , Meaning = "enter" , StrokesNum = 2 },
+ new Radical { Symbol = "八" , SymbolVariations = ",丷", Pinyin = "ba1" , Meaning = "eight" , StrokesNum = 2 },
+ new Radical { Symbol = "冂" , Pinyin = "jiong3" , Meaning = "down box" , StrokesNum = 2 },
+ new Radical { Symbol = "冖" , Pinyin = "mi4" , Meaning = "over" , StrokesNum = 2 },
+ new Radical { Symbol = "冫" , Pinyin = "bing1" , Meaning = "ice" , StrokesNum = 2 },
+ new Radical { Symbol = "几" , Pinyin = "ji1" , Meaning = "table" , StrokesNum = 2 },
+ new Radical { Symbol = "凵" , Pinyin = "qu3" , Meaning = "open box" , StrokesNum = 2 },
+ new Radical { Symbol = "刀" , SymbolVariations = ",刂", Pinyin = "dao1" , Meaning = "knife" , StrokesNum = 2 },
+ new Radical { Symbol = "力" , Pinyin = "li4" , Meaning = "power" , StrokesNum = 2 },
+ new Radical { Symbol = "勹" , Pinyin = "bao1" , Meaning = "wrap" , StrokesNum = 2 },
+ new Radical { Symbol = "匕" , Pinyin = "bi3" , Meaning = "spoon" , StrokesNum = 2 },
+ new Radical { Symbol = "匚" , Pinyin = "fang1" , Meaning = "right open box" , StrokesNum = 2 },
+ new Radical { Symbol = "匸" , Pinyin = "xi3" , Meaning = "hiding enclosure" , StrokesNum = 2 },
+ new Radical { Symbol = "十" , Pinyin = "shi2" , Meaning = "ten" , StrokesNum = 2 },
+ new Radical { Symbol = "卜" , Pinyin = "bu3" , Meaning = "Mysticism" , StrokesNum = 2 },
+ new Radical { Symbol = "卩" , Pinyin = "jie2" , Meaning = "seal" , StrokesNum = 2 },
+ new Radical { Symbol = "厂" , Pinyin = "han4" , Meaning = "cliff" , StrokesNum = 2 },
+ new Radical { Symbol = "厶" , Pinyin = "si1" , Meaning = "private" , StrokesNum = 2 },
+ new Radical { Symbol = "又" , Pinyin = "you4" , Meaning = "again" , StrokesNum = 2 },
+ new Radical { Symbol = "口" , Pinyin = "kou3" , Meaning = "mouth" , StrokesNum = 3 },
+ new Radical { Symbol = "囗" , Pinyin = "wei2" , Meaning = "enclosure" , StrokesNum = 3 },
+ new Radical { Symbol = "土" , Pinyin = "tu3" , Meaning = "earth" , StrokesNum = 3 },
+ new Radical { Symbol = "士" , Pinyin = "shi4" , Meaning = "scholar" , StrokesNum = 3 },
+ new Radical { Symbol = "夂" , Pinyin = "sui1" , Meaning = "(bottom) go" , StrokesNum = 3 },
+ new Radical { Symbol = "夊" , Pinyin = "zhi" , Meaning = "(top) go slowly" , StrokesNum = 3 },
+ new Radical { Symbol = "夕" , Pinyin = "xi4" , Meaning = "evening" , StrokesNum = 3 },
+ new Radical { Symbol = "大" , Pinyin = "da4" , Meaning = "big" , StrokesNum = 3 },
+ new Radical { Symbol = "女" , Pinyin = "nü3" , Meaning = "woman" , StrokesNum = 3 },
+ new Radical { Symbol = "子" , Pinyin = "zi3" , Meaning = "child" , StrokesNum = 3 },
+ new Radical { Symbol = "宀" , Pinyin = "mian2" , Meaning = "roof" , StrokesNum = 3 },
+ new Radical { Symbol = "寸" , Pinyin = "cun4" , Meaning = "inch" , StrokesNum = 3 },
+ new Radical { Symbol = "小" , Pinyin = "xiao3" , Meaning = "small" , StrokesNum = 3 },
+ new Radical { Symbol = "尢" , SymbolVariations= ",尣" ,  Pinyin = "wang1" , Meaning = "lame" , StrokesNum = 3 },
+ new Radical { Symbol = "尸" , Pinyin = "shi1" , Meaning = "corpse" , StrokesNum = 3 },
+ new Radical { Symbol = "屮" , Pinyin = "che4" , Meaning = "sprout" , StrokesNum = 3 },
+ new Radical { Symbol = "山" , Pinyin = "shan1" , Meaning = "mountain" , StrokesNum = 3 },
+ new Radical { Symbol = "川" , SymbolVariations = ",巛, 巜" , Pinyin = "(gui4), chuan1" , Meaning = "river" , StrokesNum = 3 },
+ new Radical { Symbol = "工" , Pinyin = "gong1" , Meaning = "work" , StrokesNum = 3 },
+ new Radical { Symbol = "己" , Pinyin = "ji3" , Meaning = "oneself" , StrokesNum = 3 },
+ new Radical { Symbol = "巾" , Pinyin = "jin1" , Meaning = "turban" , StrokesNum = 3 },
+ new Radical { Symbol = "干" , Pinyin = "gan1" , Meaning = "dry" , StrokesNum = 3 },
+ new Radical { Symbol = "幺" , Pinyin = "yao1" , Meaning = "short thread" , StrokesNum = 3 },
+ new Radical { Symbol = "广" , Pinyin = "yan3" , Meaning = "dotted cliff" , StrokesNum = 3 },
+ new Radical { Symbol = "廴" , Pinyin = "yin3" , Meaning = "long stride" , StrokesNum = 3 },
+ new Radical { Symbol = "廾" , Pinyin = "gong3" , Meaning = "two hands" , StrokesNum = 3 },
+ new Radical { Symbol = "弋" , Pinyin = "yi4" , Meaning = "shoot" , StrokesNum = 3 },
+ new Radical { Symbol = "弓" , Pinyin = "gong1" , Meaning = "bow" , StrokesNum = 3 },
+ new Radical { Symbol = "彐" , SymbolVariations = ",彑" , Pinyin = "ji4" , Meaning = "snout" , StrokesNum = 3 },
+ new Radical { Symbol = "彡" , Pinyin = "shan1" , Meaning = "bristle" , StrokesNum = 3 },
+ new Radical { Symbol = "彳" , Pinyin = "chi4" , Meaning = "step" , StrokesNum = 3 },
+ new Radical { Symbol = "心" , SymbolVariations = ",忄", Pinyin = "xin1" , Meaning = "heart" , StrokesNum = 4 },
+ new Radical { Symbol = "戈" , Pinyin = "ge1" , Meaning = "halberd" , StrokesNum = 4 },
+ new Radical { Symbol = "戶" , Pinyin = "hu4" , Meaning = "door" , StrokesNum = 4 },
+ new Radical { Symbol = "手" , SymbolVariations = ",扌", Pinyin = "shou3" , Meaning = "hand" , StrokesNum = 4 },
+ new Radical { Symbol = "支" , Pinyin = "zhi1" , Meaning = "branch" , StrokesNum = 4 },
+ new Radical { Symbol = "攴" , SymbolVariations = ",攵", Pinyin = "pu1" , Meaning = "rap" , StrokesNum = 4 },
+ new Radical { Symbol = "文" , Pinyin = "wen2" , Meaning = "script" , StrokesNum = 4 },
+ new Radical { Symbol = "斗" , Pinyin = "dou3" , Meaning = "dipper" , StrokesNum = 4 },
+ new Radical { Symbol = "斤" , Pinyin = "jin1" , Meaning = "axe" , StrokesNum = 4 },
+ new Radical { Symbol = "方" , Pinyin = "fang1" , Meaning = "square" , StrokesNum = 4 },
+ new Radical { Symbol = "无" , Pinyin = "wu2" , Meaning = "not" , StrokesNum = 4 },
+ new Radical { Symbol = "日" , Pinyin = "ri4" , Meaning = "sun" , StrokesNum = 4 },
+ new Radical { Symbol = "曰" , Pinyin = "yue1" , Meaning = "say" , StrokesNum = 4 },
+ new Radical { Symbol = "月" , Pinyin = "yue4" , Meaning = "moon" , StrokesNum = 4 },
+ new Radical { Symbol = "木" , Pinyin = "mu4" , Meaning = "tree" , StrokesNum = 4 },
+ new Radical { Symbol = "欠" , Pinyin = "qian4" , Meaning = "lack" , StrokesNum = 4 },
+ new Radical { Symbol = "止" , Pinyin = "zhi3" , Meaning = "stop" , StrokesNum = 4 },
+ new Radical { Symbol = "歹" , Pinyin = "dai3" , Meaning = "death" , StrokesNum = 4 },
+ new Radical { Symbol = "殳" , Pinyin = "shu1" , Meaning = "weapon" , StrokesNum = 4 },
+ new Radical { Symbol = "毋" , Pinyin = "mu2" , Meaning = "do not" , StrokesNum = 4 },
+ new Radical { Symbol = "比" , Pinyin = "bi3" , Meaning = "compare" , StrokesNum = 4 },
+ new Radical { Symbol = "毛" , Pinyin = "mao2" , Meaning = "fur" , StrokesNum = 4 },
+ new Radical { Symbol = "氏" , Pinyin = "shi4" , Meaning = "clan" , StrokesNum = 4 },
+ new Radical { Symbol = "气" , Pinyin = "qi4" , Meaning = "steam" , StrokesNum = 4 },
+ new Radical { Symbol = "水" , SymbolVariations = ",氵", Pinyin = "shui3" , Meaning = "water" , StrokesNum = 4 },
+ new Radical { Symbol = "火" , SymbolVariations = ",灬", Pinyin = "huo3" , Meaning = "fire" , StrokesNum = 4 },
+ new Radical { Symbol = "爪" , SymbolVariations = ",爫", Pinyin = "zhao3" , Meaning = "claw" , StrokesNum = 4 },
+ new Radical { Symbol = "父" , Pinyin = "fu4" , Meaning = "father" , StrokesNum = 4 },
+ new Radical { Symbol = "爻" , Pinyin = "yao2" , Meaning = "double x" , StrokesNum = 4 },
+ new Radical { Symbol = "爿" , Pinyin = "qiang2" , Meaning = "half tree trunk" , StrokesNum = 4 },
+ new Radical { Symbol = "片" , Pinyin = "pian4" , Meaning = "slice" , StrokesNum = 4 },
+ new Radical { Symbol = "牙" , Pinyin = "ya2" , Meaning = "fang" , StrokesNum = 4 },
+ new Radical { Symbol = "牛" , SymbolVariations = ",牜", Pinyin = "niu2" , Meaning = "cow" , StrokesNum = 4 },
+ new Radical { Symbol = "犬" , SymbolVariations = ",犭", Pinyin = "quan3" , Meaning = "dog" , StrokesNum = 4 },
+ new Radical { Symbol = "玄" , Pinyin = "xuan2" , Meaning = "profound" , StrokesNum = 5 },
+ new Radical { Symbol = "玉" , SymbolVariations = ",王", Pinyin = "yu4" , Meaning = "jade" , StrokesNum = 5 },
+ new Radical { Symbol = "瓜" , Pinyin = "gua1" , Meaning = "melon" , StrokesNum = 5 },
+ new Radical { Symbol = "瓦" , Pinyin = "wa3" , Meaning = "tile" , StrokesNum = 5 },
+ new Radical { Symbol = "甘" , Pinyin = "gan1" , Meaning = "sweet" , StrokesNum = 5 },
+ new Radical { Symbol = "生" , Pinyin = "sheng1" , Meaning = "life" , StrokesNum = 5 },
+ new Radical { Symbol = "用" , Pinyin = "yong4" , Meaning = "use" , StrokesNum = 5 },
+ new Radical { Symbol = "田" , Pinyin = "tian2" , Meaning = "field" , StrokesNum = 5 },
+ new Radical { Symbol = "疋" , Pinyin = "pi3" , Meaning = "bolt of cloth" , StrokesNum = 5 },
+ new Radical { Symbol = "疒" , Pinyin = "chuang2" , Meaning = "sickness" , StrokesNum = 5 },
+ new Radical { Symbol = "癶" , Pinyin = "bo4" , Meaning = "dotted, tent" , StrokesNum = 5 },
+ new Radical { Symbol = "白" , Pinyin = "bai2" , Meaning = "white" , StrokesNum = 5 },
+ new Radical { Symbol = "皮" , Pinyin = "pi2" , Meaning = "skin" , StrokesNum = 5 },
+ new Radical { Symbol = "皿" , Pinyin = "min3" , Meaning = "dish" , StrokesNum = 5 },
+ new Radical { Symbol = "目" , Pinyin = "mu4" , Meaning = "eye" , StrokesNum = 5 },
+ new Radical { Symbol = "矛" , Pinyin = "mao2" , Meaning = "spear" , StrokesNum = 5 },
+ new Radical { Symbol = "矢" , Pinyin = "shi3" , Meaning = "arrow" , StrokesNum = 5 },
+ new Radical { Symbol = "石" , Pinyin = "shi2" , Meaning = "stone" , StrokesNum = 5 },
+ new Radical { Symbol = "示" , SymbolVariations = ",礻", Pinyin = "shi4" , Meaning = "spirit" , StrokesNum = 5 },
+ new Radical { Symbol = "禸" , Pinyin = "rou3" , Meaning = "track" , StrokesNum = 5 },
+ new Radical { Symbol = "禾" , Pinyin = "he2" , Meaning = "grain" , StrokesNum = 5 },
+ new Radical { Symbol = "穴" , Pinyin = "xue4" , Meaning = "cave" , StrokesNum = 5 },
+ new Radical { Symbol = "立" , Pinyin = "li4" , Meaning = "stand" , StrokesNum = 5 },
+ new Radical { Symbol = "竹" , Pinyin = "zhu2" , Meaning = "bamboo" , StrokesNum = 6 },
+ new Radical { Symbol = "米" , Pinyin = "mi3" , Meaning = "rice" , StrokesNum = 6 },
+ new Radical { Symbol = "糸" , SymbolVariations = ",纟", Pinyin = "mi4" , Meaning = "silk" , StrokesNum = 6 },
+ new Radical { Symbol = "缶" , Pinyin = "fou3" , Meaning = "jar" , StrokesNum = 6 },
+ new Radical { Symbol = "网" , SymbolVariations = ",罒", Pinyin = "wang3" , Meaning = "net" , StrokesNum = 6 },
+ new Radical { Symbol = "羊" , Pinyin = "yang2" , Meaning = "sheep" , StrokesNum = 6 },
+ new Radical { Symbol = "羽" , Pinyin = "yu3" , Meaning = "feather" , StrokesNum = 6 },
+ new Radical { Symbol = "老" , Pinyin = "lao3" , Meaning = "old" , StrokesNum = 6 },
+ new Radical { Symbol = "而" , Pinyin = "er2" , Meaning = "and" , StrokesNum = 6 },
+ new Radical { Symbol = "耒" , Pinyin = "lei3" , Meaning = "plow" , StrokesNum = 6 },
+ new Radical { Symbol = "耳" , Pinyin = "er3" , Meaning = "ear" , StrokesNum = 6 },
+ new Radical { Symbol = "聿" , Pinyin = "yu4" , Meaning = "brush" , StrokesNum = 6 },
+ new Radical { Symbol = "肉" , Pinyin = "rou4" , Meaning = "meat" , StrokesNum = 6 },
+ new Radical { Symbol = "臣" , Pinyin = "chen2" , Meaning = "minister" , StrokesNum = 6 },
+ new Radical { Symbol = "自" , Pinyin = "zi4" , Meaning = "self" , StrokesNum = 6 },
+ new Radical { Symbol = "至" , Pinyin = "zhi4" , Meaning = "arrive" , StrokesNum = 6 },
+ new Radical { Symbol = "臼" , Pinyin = "jiu4" , Meaning = "mortar" , StrokesNum = 6 },
+ new Radical { Symbol = "舌" , Pinyin = "she2" , Meaning = "tongue" , StrokesNum = 6 },
+ new Radical { Symbol = "舛" , Pinyin = "chuan3" , Meaning = "oppose" , StrokesNum = 6 },
+ new Radical { Symbol = "舟" , Pinyin = "zhou1" , Meaning = "boat" , StrokesNum = 6 },
+ new Radical { Symbol = "艮" , Pinyin = "gen4" , Meaning = "stopping" , StrokesNum = 6 },
+ new Radical { Symbol = "色" , Pinyin = "se4" , Meaning = "color" , StrokesNum = 6 },
+ new Radical { Symbol = "艸" , SymbolVariations = ",艹", Pinyin = "cao3" , Meaning = "grass" , StrokesNum = 6 },
+ new Radical { Symbol = "虍" , Pinyin = "hu1" , Meaning = "tiger" , StrokesNum = 6 },
+ new Radical { Symbol = "虫" , Pinyin = "chong2" , Meaning = "insect" , StrokesNum = 6 },
+ new Radical { Symbol = "血" , Pinyin = "xue3" , Meaning = "blood" , StrokesNum = 6 },
+ new Radical { Symbol = "行" , Pinyin = "xing2" , Meaning = "walk, enclosure" , StrokesNum = 6 },
+ new Radical { Symbol = "衣" , SymbolVariations = ",衤", Pinyin = "yi1" , Meaning = "clothes" , StrokesNum = 6 },
+ new Radical { Symbol = "襾" , SymbolVariations = ",覀", Pinyin = "ya4" , Meaning = "west" , StrokesNum = 6 },
+ new Radical { Symbol = "見" , SymbolVariations = ",见", Pinyin = "jian4" , Meaning = "see" , StrokesNum = 7 },
+ new Radical { Symbol = "角" , Pinyin = "jue2" , Meaning = "horn" , StrokesNum = 7 },
+ new Radical { Symbol = "言" , SymbolVariations = ",讠", Pinyin = "yan2" , Meaning = "speech" , StrokesNum = 7 },
+ new Radical { Symbol = "谷" , Pinyin = "gu3" , Meaning = "valley" , StrokesNum = 7 },
+ new Radical { Symbol = "豆" , Pinyin = "dou4" , Meaning = "bean" , StrokesNum = 7 },
+ new Radical { Symbol = "豖" , Pinyin = "shi3" , Meaning = "pig" , StrokesNum = 7 },
+ new Radical { Symbol = "豸" , Pinyin = "zhi4" , Meaning = "badger" , StrokesNum = 7 },
+ new Radical { Symbol = "貝" , SymbolVariations = ",贝", Pinyin = "bei4" , Meaning = "shell" , StrokesNum = 7 },
+ new Radical { Symbol = "赤" , Pinyin = "chi4" , Meaning = "red" , StrokesNum = 7 },
+ new Radical { Symbol = "走" , Pinyin = "zou3" , Meaning = "run" , StrokesNum = 7 },
+ new Radical { Symbol = "足" , Pinyin = "zu2" , Meaning = "foot" , StrokesNum = 7 },
+ new Radical { Symbol = "身" , Pinyin = "shen1" , Meaning = "body" , StrokesNum = 7 },
+ new Radical { Symbol = "車" , SymbolVariations = ",车", Pinyin = "che1" , Meaning = "cart" , StrokesNum = 7 },
+ new Radical { Symbol = "辛" , Pinyin = "xin1" , Meaning = "bitter" , StrokesNum = 7 },
+ new Radical { Symbol = "辰" , Pinyin = "chen2" , Meaning = "morning" , StrokesNum = 7 },
+ new Radical { Symbol = "辵" , SymbolVariations = ",辶", Pinyin = "chuo4" , Meaning = "walk" , StrokesNum = 7 },
+ new Radical { Symbol = "邑" , SymbolVariations = ",阝", Pinyin = "yi4" , Meaning = "city" , StrokesNum = 7 },
+ new Radical { Symbol = "酉" , Pinyin = "you3" , Meaning = "wine" , StrokesNum = 7 },
+ new Radical { Symbol = "釆" , Pinyin = "bian4" , Meaning = "distinguish" , StrokesNum = 7 },
+ new Radical { Symbol = "里" , Pinyin = "li3" , Meaning = "village" , StrokesNum = 7 },
+ new Radical { Symbol = "金" , Pinyin = "jin1" , Meaning = "gold" , StrokesNum = 8 },
+ new Radical { Symbol = "長" , SymbolVariations = ",长", Pinyin = "chang2" , Meaning = "long" , StrokesNum = 8 },
+ new Radical { Symbol = "門" , SymbolVariations = ",门", Pinyin = "men2" , Meaning = "gate" , StrokesNum = 8 },
+ new Radical { Symbol = "阜" , SymbolVariations = ",阝", Pinyin = "fu4" , Meaning = "mound" , StrokesNum = 8 },
+ new Radical { Symbol = "隶" , Pinyin = "dai4" , Meaning = "slave" , StrokesNum = 8 },
+ new Radical { Symbol = "隹" , Pinyin = "zhui1" , Meaning = "short, tailed, bird" , StrokesNum = 8 },
+ new Radical { Symbol = "雨" , Pinyin = "yu3" , Meaning = "rain" , StrokesNum = 8 },
+ new Radical { Symbol = "青" , Pinyin = "qing1" , Meaning = "blue" , StrokesNum = 8 },
+ new Radical { Symbol = "非" , Pinyin = "fei1" , Meaning = "wrong" , StrokesNum = 8 },
+ new Radical { Symbol = "面" , Pinyin = "mian4" , Meaning = "face" , StrokesNum = 9 },
+ new Radical { Symbol = "革" , Pinyin = "ge2" , Meaning = "leather" , StrokesNum = 9 },
+ new Radical { Symbol = "韋" , SymbolVariations = ",韦", Pinyin = "wei2" , Meaning = "tanned, leather" , StrokesNum = 9 },
+ new Radical { Symbol = "韭" , Pinyin = "jiu3" , Meaning = "leek" , StrokesNum = 9 },
+ new Radical { Symbol = "音" , Pinyin = "yin1" , Meaning = "sound" , StrokesNum = 9 },
+ new Radical { Symbol = "頁" , SymbolVariations = ",页", Pinyin = "ye4" , Meaning = "leaf" , StrokesNum = 9 },
+ new Radical { Symbol = "風" , SymbolVariations = ",风", Pinyin = "feng1" , Meaning = "wind" , StrokesNum = 9 },
+ new Radical { Symbol = "飛" , SymbolVariations = ",飞", Pinyin = "fei1" , Meaning = "fly" , StrokesNum = 9 },
+ new Radical { Symbol = "食" , SymbolVariations = ",飠, 饣", Pinyin = "shi2" , Meaning = "eat" , StrokesNum = 9 },
+ new Radical { Symbol = "首" , Pinyin = "shou3" , Meaning = "head" , StrokesNum = 9 },
+ new Radical { Symbol = "香" , Pinyin = "xiang1" , Meaning = "fragrant" , StrokesNum = 9 },
+ new Radical { Symbol = "馬" , SymbolVariations = ",马", Pinyin = "ma3" , Meaning = "horse" , StrokesNum = 0 },
+ new Radical { Symbol = "骨" , Pinyin = "gu3" , Meaning = "bone" , StrokesNum = 10 },
+ new Radical { Symbol = "高" , Pinyin = "gao1" , Meaning = "tall" , StrokesNum = 10 },
+ new Radical { Symbol = "髟" , Pinyin = "biao1" , Meaning = "hair" , StrokesNum = 10 },
+ new Radical { Symbol = "鬥" , Pinyin = "dou4" , Meaning = "fight" , StrokesNum = 10 },
+ new Radical { Symbol = "鬯" , Pinyin = "chang4" , Meaning = "sacrificial, wine" , StrokesNum = 10 },
+ new Radical { Symbol = "鬲" , Pinyin = "li4" , Meaning = "cauldron" , StrokesNum = 10 },
+ new Radical { Symbol = "鬼" , Pinyin = "gui3" , Meaning = "ghost" , StrokesNum = 10 },
+ new Radical { Symbol = "魚" , SymbolVariations = ",鱼", Pinyin = "yu2" , Meaning = "fish" , StrokesNum = 11 },
+ new Radical { Symbol = "鳥" , SymbolVariations = ",鸟", Pinyin = "niao3" , Meaning = "bird" , StrokesNum = 11 },
+ new Radical { Symbol = "鹵" , Pinyin = "lu3" , Meaning = "salt" , StrokesNum = 11 },
+ new Radical { Symbol = "鹿" , Pinyin = "lu4" , Meaning = "deer" , StrokesNum = 11 },
+ new Radical { Symbol = "麥" , SymbolVariations = ",麦", Pinyin = "mai4" , Meaning = "wheat" , StrokesNum = 11 },
+ new Radical { Symbol = "麻" , Pinyin = "ma2" , Meaning = "hemp" , StrokesNum = 11 },
+ new Radical { Symbol = "黃" , Pinyin = "huang2" , Meaning = "yellow" , StrokesNum = 12 },
+ new Radical { Symbol = "黍" , Pinyin = "shu3" , Meaning = "millet" , StrokesNum = 12 },
+ new Radical { Symbol = "黑" , Pinyin = "hei1" , Meaning = "black" , StrokesNum = 12 },
+ new Radical { Symbol = "黹" , Pinyin = "zhi3" , Meaning = "embroidery" , StrokesNum = 12 },
+ new Radical { Symbol = "黽" , SymbolVariations = ",黾", Pinyin = "min3" , Meaning = "frog" , StrokesNum = 13 },
+ new Radical { Symbol = "鼎" , Pinyin = "ding3" , Meaning = "tripod" , StrokesNum = 13 },
+ new Radical { Symbol = "鼓" , Pinyin = "gu3" , Meaning = "drum" , StrokesNum = 13 },
+ new Radical { Symbol = "鼠" , SymbolVariations = ",鼡", Pinyin = "shu3" , Meaning = "rat" , StrokesNum = 13 },
+ new Radical { Symbol = "鼻" , Pinyin = "bi2" , Meaning = "nose" , StrokesNum = 14 },
+ new Radical { Symbol = "齊" , SymbolVariations = ",齐", Pinyin = "qi2" , Meaning = "even" , StrokesNum = 14 },
+ new Radical { Symbol = "齒" , SymbolVariations = ",齿", Pinyin = "chi3" , Meaning = "tooth" , StrokesNum = 15 },
+ new Radical { Symbol = "龍" , SymbolVariations = ",龙", Pinyin = "long2" , Meaning = "dragon" , StrokesNum = 16 },
+ new Radical { Symbol = "龜" , SymbolVariations = ",龟", Pinyin = "gui1" , Meaning = "turtle" , StrokesNum = 16 },
+ new Radical { Symbol = "龠" , Pinyin = "yue4" , Meaning = "flute" , StrokesNum = 17 }
 
-        protected override void Seed(RadicalStories.Models.ApplicationDbContext context){
-            var categories = new Category[] {
-                new Category
-                {
-                    Radical = "一",
-                    Characters = new Character[]
-                    {
-                        new Character {Symbol = "一" }
-                    }
-                },
-                new Category
-                {
-                    Radical = "木",
-                    Characters = new Character[]
-                    {
-                        new Character {Symbol = "木" },
-                        new Character {Symbol = "林" }
-                    }
-                }
             };
 
-            context.Categories.AddOrUpdate(m => m.Radical, categories);
+
+            context.Radicals.AddOrUpdate(m => m.Symbol, radicals);
 
             var userStore = new UserStore<ApplicationUser>(context);
             var userManager = new ApplicationUserManager(userStore);
@@ -49,22 +245,10 @@
                     Email = "outsidetheglass93@gmail.com"
                 };
                 userManager.Create(user, "Secret123!");
-                userManager.AddClaim(user.Id, new Claim("CanAddCharacters", "true"));
+                userManager.AddClaim(user.Id, new Claim("CanAddRadicals", "true"));
             }
             context.Users.AddOrUpdate(m => m.UserName, user);
 
         }
     }
 }
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //

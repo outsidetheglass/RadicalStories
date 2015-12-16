@@ -7,13 +7,13 @@ namespace RadicalStories.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class tryClaimsAgain : IMigrationMetadata
+    public sealed partial class initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(tryClaimsAgain));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201512071950468_tryClaimsAgain"; }
+            get { return "201512160514102_initial"; }
         }
         
         string IMigrationMetadata.Source

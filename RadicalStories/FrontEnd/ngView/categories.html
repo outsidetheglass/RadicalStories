@@ -1,19 +1,230 @@
-﻿
-    <div class="row">
-        <div class="col-md-12">
-            <h1>Categories Page</h1>
-        </div>
-    </div>
-<div class="row">
-    <div class="col-md-6 col-md-offset-3" ng-repeat="cate in vm.categories">
-
-        <h2>Character: <b>{{cate.symbol}}</b></h2>
-        <br />Pronunciation: {{cate.pinyin}}
-        <br />Meaning: {{cate.meaning}}
-        <br />Radicals: {{cate.radicals}}
-        <br />Formation: {{cate.formation}}
-        <p>
-        <a href="/delete/{{cate.id}}">Delete</a>
-        <a href="/edit/{{cate.id}}">Edit</a></p>
+﻿<div class="row">
+    <div class="col-md-12">
+        <h1>Categories Page</h1>
+        <h3>Radicals by Number of Strokes:</h3>
     </div>
 </div>
+
+    
+        <div class="col-md-12">1</div>
+    </tr>
+    <tr ng-model="vm.radTblStrokeNum" ng-options="r as r.id for r in rs">
+        <td>
+            <a href="/radicalList/{{radTblStrokeNum.id}}">
+                {{radTblStrokeNum.symbol}}
+            </a>
+        </td>
+    </tr>
+</table>
+<br />
+
+    
+        <div class="col-md-12">
+            2
+        </div>
+    </tr>
+    <tr ng-repeat="cate in vm.radicals">
+        <td ng-if="cate.strokesNum==2">
+            <a href="/radicalList/{{cate.id}}">
+                {{cate.symbol}}
+            </a>
+        </td>
+    </tr>
+
+    
+        <div class="col-md-12">
+            3
+        </div>
+    </tr>
+</table>
+
+    <tr ng-repeat="cate in vm.radicals">
+        <td ng-if="cate.strokesNum==3">
+            <a href="/radicalList/{{cate.id}}">
+                {{cate.symbol}}
+            </a>
+        </td>
+    </tr>
+</table>
+
+    
+        <div class="col-md-12">
+            4
+        </div>
+    </tr>
+    <tr ng-repeat="cate in vm.radicals">
+        <td ng-if="cate.strokesNum==4">
+            <a href="/radicalList/{{cate.id}}">
+                {{cate.symbol}}
+            </a>
+        </td>
+    </tr>
+</table>
+
+    
+        <div class="col-md-12">
+            5
+        </div>
+    </tr>
+    <tr ng-repeat="cate in vm.radicals">
+        <td ng-if="cate.strokesNum==5">
+            <a href="/radicalList/{{cate.id}}">
+                {{cate.symbol}}
+            </a>
+        </td>
+    </tr>
+</table>
+
+    
+        <div class="col-md-12">
+            6
+        </div>
+    </tr>
+    <tr ng-repeat="cate in vm.radicals">
+        <td ng-if="cate.strokesNum==6">
+            <a href="/radicalList/{{cate.id}}">
+                {{cate.symbol}}
+            </a>
+        </td>
+    </tr>
+</table>
+
+    
+        <div class="col-md-12">
+            7
+        </div>
+    </tr>
+    <tr ng-repeat="cate in vm.radicals">
+        <td ng-if="cate.strokesNum==7">
+            <a href="/radicalList/{{cate.id}}">
+                {{cate.symbol}}
+            </a>
+        </td>
+    </tr>
+</table>
+
+    
+        <div class="col-md-12">
+            8
+        </div>
+    </tr>
+    <tr ng-repeat="cate in vm.radicals">
+        <td ng-if="cate.strokesNum==8">
+            <a href="/radicalList/{{cate.id}}">
+                {{cate.symbol}}
+            </a>
+        </td>
+    </tr>
+</table>
+
+    
+        <div class="col-md-12">
+            9
+        </div>
+    </tr>
+    <tr ng-repeat="cate in vm.radicals">
+        <td ng-if="cate.strokesNum==9">
+            <a href="/radicalList/{{cate.id}}">
+                {{cate.symbol}}
+            </a>
+        </td>
+    </tr>
+</table>
+
+    
+        <div class="col-md-12">
+            10
+        </div>
+    </tr>
+    <tr ng-repeat="cate in vm.radicals">
+        <td ng-if="cate.strokesNum==10">
+            <a href="/radicalList/{{cate.id}}">
+                {{cate.symbol}}
+            </a>
+        </td>
+    </tr>
+</table>
+
+    
+        <div class="col-md-12">
+            11
+        </div>
+    </tr>
+    <tr ng-repeat="cate in vm.radicals">
+        <td ng-if="cate.strokesNum==11">
+            <a href="/radicalList/{{cate.id}}">
+                {{cate.symbol}}
+            </a>
+        </td>
+    </tr>
+</table>
+
+    
+        <div class="col-md-12">
+            12
+        </div>
+    </tr>
+    <tr ng-repeat="cate in vm.radicals">
+        <td ng-if="cate.strokesNum==12">
+            <a href="/radicalList/{{cate.id}}">
+                {{cate.symbol}}
+            </a>
+        </td>
+    </tr>
+</table>
+
+    
+        <div class="col-md-12">
+            13
+        </div>
+    </tr>
+    <tr ng-repeat="cate in vm.radicals">
+        <td ng-if="cate.strokesNum==13">
+            <a href="/radicalList/{{cate.id}}">
+                {{cate.symbol}}
+            </a>
+        </td>
+    </tr>
+</table>
+
+    
+        <div class="col-md-12">
+            14
+        </div>
+    </tr>
+    <tr ng-repeat="cate in vm.radicals">
+        <td ng-if="cate.strokesNum==14">
+            <a href="/radicalList/{{cate.id}}">
+                {{cate.symbol}}
+            </a>
+        </td>
+    </tr>
+</table>
+
+    
+        <div class="col-md-12">
+            15
+        </div>
+    </tr>
+    <tr ng-repeat="cate in vm.radicals">
+        <td ng-if="cate.strokesNum==15">
+            <a href="/radicalList/{{cate.id}}">
+                {{cate.symbol}}
+            </a>
+        </td>
+    </tr>
+</table>
+
+    
+        <div class="col-md-12">
+            16
+        </div>
+    </tr>
+    <tr ng-repeat="cate in vm.radicals">
+        <td ng-if="cate.strokesNum==16">
+            <a href="/radicalList/{{cate.id}}">
+                {{cate.symbol}}
+            </a>
+        </td>
+    </tr>
+</table>

@@ -3,22 +3,33 @@ namespace RadicalStories.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initMigrate : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.Characters",
+                "dbo.Categories",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Radicals",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Pinyin = c.String(),
-                        Symbol = c.String(nullable: false, maxLength: 4),
-                        Radicals = c.String(),
-                        Formation = c.String(),
-                        Story = c.String(),
+                        Symbol = c.String(nullable: false, maxLength: 20),
+                        SymbolVariations = c.String(),
+                        Meaning = c.String(),
+                        StrokesNum = c.Int(nullable: false),
+                        Category_Id = c.Int(),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Categories", t => t.Category_Id)
+                .Index(t => t.Category_Id);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -96,18 +107,21 @@ namespace RadicalStories.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Radicals", "Category_Id", "dbo.Categories");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Radicals", new[] { "Category_Id" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.Characters");
+            DropTable("dbo.Radicals");
+            DropTable("dbo.Categories");
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using RadicalStories.Models;
+using RadicalStories.Services;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -9,17 +11,17 @@ using System.Web.Http;
 
 namespace RadicalStories.API {
     public class CharactersController : ApiController {
-        private IRepository _repo;
-        public CharactersController(IRepository repo) {
-            this._repo = repo;
+        private ICharacterServices _service;
+        public CharactersController(ICharacterServices service) {
+            this._service = service;
         }
-        public IEnumerable<Character> Get() {
-            var characters = _repo.ListCharacters();
-            return characters;
+        public IEnumerable<Radical> Get() {
+            var radicals = _service.ListRadicals();
+            return radicals;
         }
 
         public IHttpActionResult Get(int id) {
-            var match = _repo.Find(id);
+            var match = _service.Find(id);
             if (match == null) {
                 return NotFound();
             }
@@ -28,33 +30,32 @@ namespace RadicalStories.API {
 
         // POST: api/Characters
         [Authorize]
-        public IHttpActionResult Post(Character character) {
+        public IHttpActionResult Post(Radical radical) {
             if (!ModelState.IsValid) {
                 return BadRequest(this.ModelState);
             }
 
             var user = this.User as ClaimsPrincipal;
-            if (user.HasClaim("CanAddCharacters", "true")) {
-                _repo.SaveChar(character);
-                return Created("", character);
+            if (user.HasClaim("CanAddRadicals", "true")) {
+                _service.SaveRad(radical);
+                return Created("", radical);
             }
             else { return Unauthorized(); }
         }
         
         // DELETE: api/Characters/5
         public IHttpActionResult Delete(int id) {
-            _repo.Delete(id);
+            _service.Delete(id);
             return Ok();
         }
         //[HttpGet]
-        //[Route("api/categories/search/{searchString}")]
-        //public IHttpActionResult Search(string searchString)
-        //{
-        //    if (string.IsNullOrWhiteSpace(searchString)) {
-        //        return BadRequest("Empty search, oh nooo!");
-        //    }
-        //    var results = _repo.Characters.Where(p => p.Symbol.Contains(searchString));
-        //    return Ok(results);
+        //[Route("api/characters/search/:id")]
+        //public IList<Radical> Find(int id) {
+        //    //if (string.IsNullOrWhiteSpace(searchString)) {
+        //      //  return BadRequest("Empty search, oh nooo!");
+        //    //}
+        //    var searchResults = _service.RadicalSearch(id);
+        //    return searchResults;
         //}
     }
 }

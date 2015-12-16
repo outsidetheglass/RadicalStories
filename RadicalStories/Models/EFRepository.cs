@@ -11,39 +11,38 @@ namespace RadicalStories.Models
     {
         private ApplicationDbContext _db = new ApplicationDbContext();
 
-        public IList<Character> ListCharacters()
+        public IList<Radical> ListRadicals()
         {
-            return _db.Characters.ToList();
+            return _db.Radicals.ToList();
         }
 
         //var categories = (from m in _db.Categories select m).ToList();
         //    return categories;
         //    Character.Where(p => p.Id == id).FirstOrDefault();
 
-        public void SaveChar(Character charToSave)
+        public void SaveRad(Radical radToSave)
         {
-            if (charToSave.Id == 0) {
-                _db.Characters.Add(charToSave);
+            if (radToSave.Id == 0) {
+                _db.Radicals.Add(radToSave);
                 _db.SaveChanges();
             } else {
-                var original = this.Find(charToSave.Id);
-                original.Symbol = charToSave.Symbol;
-                original.Pinyin = charToSave.Pinyin;
-                original.Meaning = charToSave.Meaning;
-                original.Radicals = charToSave.Radicals;
-                original.Formation = charToSave.Formation;
+                var original = this.Find(radToSave.Id);
+                original.Symbol = radToSave.Symbol;
+                original.Pinyin = radToSave.Pinyin;
+                original.Meaning = radToSave.Meaning;
+                original.StrokesNum = radToSave.StrokesNum;
                 _db.SaveChanges();
             }
         }
 
-        public Character Find(int id)
+        public Radical Find(int id)
         {
-            return _db.Characters.Find(id);
+            return _db.Radicals.Find(id);
         }
         public void Delete(int id)
         {
-            var character = this.Find(id);
-            _db.Characters.Remove(character);
+            var radical = this.Find(id);
+            _db.Radicals.Remove(radical);
             _db.SaveChanges();
         }
     }

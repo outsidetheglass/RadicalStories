@@ -22,7 +22,7 @@ namespace RadicalStories.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public IDbSet<Category> Categories { get; set; }
-        public IDbSet<Character> Characters { get; set; }
+        public IDbSet<Radical> Radicals { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

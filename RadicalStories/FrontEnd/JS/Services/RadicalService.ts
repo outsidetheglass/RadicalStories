@@ -1,20 +1,26 @@
 ﻿namespace MyApp.Service {
     export class RadicalService {
         private categoryInfo;
+        private searchResult;
 
         constructor($resource: ng.resource.IResourceService) {
             this.categoryInfo = $resource('/api/characters/:id');
-        }//contsructor
+            this.searchResult = $resource('/api/characters/search/:id');
+        }
 
-        public getCharacters() {
+        //public search(id:number) {
+        //    return this.searchResult.find({ id: id });
+        //}
+
+        public getRadicals() {
             return this.categoryInfo.query();
         }
         public get(id: number) {
             return this.categoryInfo.get({ id: id });
         }
-        public save(character) {
-            console.log(character);
-            return this.categoryInfo.save(character).$promise;
+        public save(radical) {
+            console.log(radical);
+            return this.categoryInfo.save(radical).$promise;
         }
         public delete(id: number) {
             return this.categoryInfo.delete({ id: id }).$promise;

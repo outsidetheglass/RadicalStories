@@ -5,16 +5,20 @@ var MyApp;
         var RadicalService = (function () {
             function RadicalService($resource) {
                 this.categoryInfo = $resource('/api/characters/:id');
-            } //contsructor
-            RadicalService.prototype.getCharacters = function () {
+                this.searchResult = $resource('/api/characters/search/:id');
+            }
+            //public search(id:number) {
+            //    return this.searchResult.find({ id: id });
+            //}
+            RadicalService.prototype.getRadicals = function () {
                 return this.categoryInfo.query();
             };
             RadicalService.prototype.get = function (id) {
                 return this.categoryInfo.get({ id: id });
             };
-            RadicalService.prototype.save = function (character) {
-                console.log(character);
-                return this.categoryInfo.save(character).$promise;
+            RadicalService.prototype.save = function (radical) {
+                console.log(radical);
+                return this.categoryInfo.save(radical).$promise;
             };
             RadicalService.prototype.delete = function (id) {
                 return this.categoryInfo.delete({ id: id }).$promise;

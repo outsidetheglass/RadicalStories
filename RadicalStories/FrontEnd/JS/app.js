@@ -10,12 +10,12 @@ var MyApp;
         })
             .when("/delete/:id", {
             templateUrl: "/FrontEnd/ngView/delete.html",
-            controller: MyApp.CharacterDeleteController,
+            controller: MyApp.RadicalDeleteController,
             controllerAs: 'vm'
         })
             .when("/edit/:id", {
-            templateUrl: "/FrontEnd/ngView/editChar.html",
-            controller: MyApp.CharacterEditController,
+            templateUrl: "/FrontEnd/ngView/editRad.html",
+            controller: MyApp.RadicalEditController,
             controllerAs: 'vm'
         })
             .when("/categories", {
@@ -25,7 +25,7 @@ var MyApp;
         })
             .when("/add", {
             templateUrl: "/FrontEnd/ngView/add.html",
-            controller: MyApp.CharacterAddController,
+            controller: MyApp.RadicalAddController,
             controllerAs: 'vm'
         })
             .when("/login", {
@@ -36,6 +36,11 @@ var MyApp;
             .when("/register", {
             templateUrl: "/FrontEnd/ngView/register.html",
             controller: MyApp.Controllers.RegisterController,
+            controllerAs: 'vm'
+        })
+            .when("/radicalList/:id", {
+            templateUrl: "/FrontEnd/ngView/radicalList.html",
+            controller: MyApp.RadicalListController,
             controllerAs: 'vm'
         })
             .otherwise("/");

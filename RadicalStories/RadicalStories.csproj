@@ -70,11 +70,19 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
@@ -237,53 +245,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201512020100573_initMigrate.cs" />
-    <Compile Include="Migrations\201512020100573_initMigrate.Designer.cs">
-      <DependentUpon>201512020100573_initMigrate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512021828183_updtConfig.cs" />
-    <Compile Include="Migrations\201512021828183_updtConfig.Designer.cs">
-      <DependentUpon>201512021828183_updtConfig.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512021843145_seedFirst.cs" />
-    <Compile Include="Migrations\201512021843145_seedFirst.Designer.cs">
-      <DependentUpon>201512021843145_seedFirst.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512021849460_seedSecond.cs" />
-    <Compile Include="Migrations\201512021849460_seedSecond.Designer.cs">
-      <DependentUpon>201512021849460_seedSecond.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512030412490_debgger.cs" />
-    <Compile Include="Migrations\201512030412490_debgger.Designer.cs">
-      <DependentUpon>201512030412490_debgger.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512040250466_loginRegister.cs" />
-    <Compile Include="Migrations\201512040250466_loginRegister.Designer.cs">
-      <DependentUpon>201512040250466_loginRegister.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512071910439_addClaims.cs" />
-    <Compile Include="Migrations\201512071910439_addClaims.Designer.cs">
-      <DependentUpon>201512071910439_addClaims.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512071950468_tryClaimsAgain.cs" />
-    <Compile Include="Migrations\201512071950468_tryClaimsAgain.Designer.cs">
-      <DependentUpon>201512071950468_tryClaimsAgain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512072013018_claimsAttemptTheThriced.cs" />
-    <Compile Include="Migrations\201512072013018_claimsAttemptTheThriced.Designer.cs">
-      <DependentUpon>201512072013018_claimsAttemptTheThriced.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512072014023_claimerClaimed.cs" />
-    <Compile Include="Migrations\201512072014023_claimerClaimed.Designer.cs">
-      <DependentUpon>201512072014023_claimerClaimed.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512072016302_howManyMigrationsCanIMake.cs" />
-    <Compile Include="Migrations\201512072016302_howManyMigrationsCanIMake.Designer.cs">
-      <DependentUpon>201512072016302_howManyMigrationsCanIMake.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512072031591_claimAgain.cs" />
-    <Compile Include="Migrations\201512072031591_claimAgain.Designer.cs">
-      <DependentUpon>201512072031591_claimAgain.cs</DependentUpon>
+    <Compile Include="Migrations\201512160514102_initial.cs" />
+    <Compile Include="Migrations\201512160514102_initial.Designer.cs">
+      <DependentUpon>201512160514102_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -291,11 +255,14 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Character.cs" />
     <Compile Include="Models\EFRepository.cs" />
+    <Compile Include="Models\GenericRepository.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
+    <Compile Include="Services\CharacterServices.cs" />
+    <Compile Include="Services\ICharacterServices.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -306,11 +273,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="FrontEnd\ngView\add.html" />
     <Content Include="FrontEnd\ngView\categories.html" />
+    <Content Include="FrontEnd\ngView\radicalList.html" />
     <Content Include="FrontEnd\ngView\delete.html" />
     <Content Include="FrontEnd\ngView\editChar.html" />
     <Content Include="FrontEnd\ngView\index.html" />
     <Content Include="FrontEnd\ngView\login.html" />
     <Content Include="FrontEnd\ngView\register.html" />
+    <Content Include="GitIgnore\.gitignore" />
     <Content Include="Global.asax" />
     <Content Include="HtmlPage1.html" />
     <Content Include="Scripts\angular-animate.js" />
@@ -371,6 +340,8 @@
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="GitIgnore\Sceret.config" />
+    <None Include="Properties\PublishProfiles\RadicalStoryTime - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
@@ -1177,41 +1148,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201512020100573_initMigrate.resx">
-      <DependentUpon>201512020100573_initMigrate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512021828183_updtConfig.resx">
-      <DependentUpon>201512021828183_updtConfig.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512021843145_seedFirst.resx">
-      <DependentUpon>201512021843145_seedFirst.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512021849460_seedSecond.resx">
-      <DependentUpon>201512021849460_seedSecond.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512030412490_debgger.resx">
-      <DependentUpon>201512030412490_debgger.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512040250466_loginRegister.resx">
-      <DependentUpon>201512040250466_loginRegister.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512071910439_addClaims.resx">
-      <DependentUpon>201512071910439_addClaims.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512071950468_tryClaimsAgain.resx">
-      <DependentUpon>201512071950468_tryClaimsAgain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512072013018_claimsAttemptTheThriced.resx">
-      <DependentUpon>201512072013018_claimsAttemptTheThriced.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512072014023_claimerClaimed.resx">
-      <DependentUpon>201512072014023_claimerClaimed.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512072016302_howManyMigrationsCanIMake.resx">
-      <DependentUpon>201512072016302_howManyMigrationsCanIMake.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512072031591_claimAgain.resx">
-      <DependentUpon>201512072031591_claimAgain.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201512160514102_initial.resx">
+      <DependentUpon>201512160514102_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

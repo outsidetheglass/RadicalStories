@@ -18,20 +18,20 @@ namespace RadicalStories.API
         }
 
 
-        public IEnumerable<Character> Get()
+        public IEnumerable<Radical> Get()
         {
-            var movies = _repo.ListCharacters();
-            return movies;
+            var categories = _repo.ListRadicals();
+            return categories;
         }
-        public IHttpActionResult Post(Character character)
+        public IHttpActionResult Post(Radical radical)
         {
             if (!ModelState.IsValid) {
                 return BadRequest(this.ModelState);
             }
 
-            _repo.SaveChar(character);
+            _repo.SaveRad(radical);
 
-            return Created("", character);
+            return Created("", radical);
         }
 
         public IHttpActionResult Delete(int id)
@@ -41,11 +41,11 @@ namespace RadicalStories.API
         }
         public IHttpActionResult Get(int id)
         {
-            var character = _repo.Find(id);
-            if (character == null) {
+            var radical = _repo.Find(id);
+            if (radical == null) {
                 return NotFound();
             }
-            return Ok(character);
+            return Ok(radical);
         }
     }
 }

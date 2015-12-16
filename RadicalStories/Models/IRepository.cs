@@ -5,8 +5,8 @@ namespace RadicalStories.Models
     public interface IRepository
     {
         void Delete(int id);
-        Character Find(int id);
-        IList<Character> ListCharacters();
-        void SaveChar(Character charToSave);
+        Radical Find(int id);
+        IList<Radical> ListRadicals();
+        void SaveRad(Radical radToSave);
     }
 }
