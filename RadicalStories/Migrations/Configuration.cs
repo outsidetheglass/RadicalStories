@@ -8,14 +8,20 @@
     using System.Linq;
     using System.Security.Claims;
     using System.Web.Http;
+    using System.Collections.Generic;
+
     internal sealed class Configuration : DbMigrationsConfiguration<RadicalStories.Models.ApplicationDbContext> {
+        
         public Configuration() {
             AutomaticMigrationsEnabled = false;
         }
         protected override void Seed(RadicalStories.Models.ApplicationDbContext context) {
+            
+            //var yiLines = new List<decimal>(){0.5m, 1.00m, 1.5m, 1.00m };
+            
             var radicals = new Radical[]
             {
-                 new Radical { Symbol = "一" , Pinyin = "yi1" , Meaning = "one" , StrokesNum = 1 },
+                 new Radical { Symbol = "一" , Pinyin = "yi1" , Meaning = "one" , StrokesNum = 1, Lines = { 0.5m, 1.00m, 1.5m, 1.00m } },
  new Radical { Symbol = "丨" , Pinyin = "gun3" , Meaning = "line" , StrokesNum = 1 },
  new Radical { Symbol = "丶" , Pinyin = "zhu3" , Meaning = "dot" , StrokesNum = 1 },
  new Radical { Symbol = "丿", SymbolVariations = ",乀, 乁" , Pinyin = "(fu2), (yi2), (pie1)" , Meaning = "slash" , StrokesNum = 1 },
@@ -73,7 +79,7 @@
  new Radical { Symbol = "弋" , Pinyin = "yi4" , Meaning = "shoot" , StrokesNum = 3 },
  new Radical { Symbol = "弓" , Pinyin = "gong1" , Meaning = "bow" , StrokesNum = 3 },
  new Radical { Symbol = "彐" , SymbolVariations = ",彑" , Pinyin = "ji4" , Meaning = "snout" , StrokesNum = 3 },
- new Radical { Symbol = "彡" , Pinyin = "shan1" , Meaning = "bristle" , StrokesNum = 3 },
+ new Radical { Symbol = "彡" , Pinyin = "shan1" , Meaning = "bristle" , StrokesNum = 3},
  new Radical { Symbol = "彳" , Pinyin = "chi4" , Meaning = "step" , StrokesNum = 3 },
  new Radical { Symbol = "心" , SymbolVariations = ",忄", Pinyin = "xin1" , Meaning = "heart" , StrokesNum = 4 },
  new Radical { Symbol = "戈" , Pinyin = "ge1" , Meaning = "halberd" , StrokesNum = 4 },
@@ -231,8 +237,6 @@
  new Radical { Symbol = "龠" , Pinyin = "yue4" , Meaning = "flute" , StrokesNum = 17 }
 
             };
-
-
             context.Radicals.AddOrUpdate(m => m.Symbol, radicals);
 
             var userStore = new UserStore<ApplicationUser>(context);

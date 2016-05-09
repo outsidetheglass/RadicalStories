@@ -2,41 +2,16 @@
 
     export class CategoriesController {
         public radicals;
+        public numStrokes = [];
         constructor(public radicalService: MyApp.Service.RadicalService,
             private $location: angular.ILocationService) {
+            for (let i = 1; i <= 17; i++) {
+                this.numStrokes.push(i);
+            }
             this.radicals = this.radicalService.getRadicals();
         }
-        //public showRad(contain) {
-        //    for (let r = 0; r < this.categories.length; r++) {
-        //        if (this.categories[r].radicals.search(contain) != -1) { this.categories[r].character = this.categories[r].radicals; }
-        //        else { this.categories[r].character = null; }}
     };
-
-    export class RadicalListController {
-        public radicals;
-        public forvoPronun;
-        public playZh() {
-            let word = this.radicals.symbol;
-            this.$http.jsonp(`http://apifree.forvo.com/key/a8ca345ac18682c035b493319f774026/format/json/action/standard-pronunciation/word/${word}/language/zh/?callback=JSON_CALLBACK`
-            ).then((results: any) => {
-                if (results.data.items.length) {
-                    this.forvoPronun = results.data.items[0].pathmp3;
-                    let audioSample = new Audio(this.$sce.trustAsUrl(`${this.forvoPronun}`));
-                    audioSample.play();
-                }
-            });
-
-        }
-
-        constructor(public radicalService: MyApp.Service.RadicalService,
-            private $location: angular.ILocationService,
-            private $routeParams: ng.route.IRouteParamsService, private $http: ng.IHttpService, private $sce: ng.ISCEService) {
-            this.radicals = this.radicalService.get($routeParams['id']);
-
-        }
-
-
-    };
+    
 
     export class RadicalAddController {
         public radicalToAdd;
@@ -54,7 +29,7 @@
         public radToDelete;
 
         constructor(private radicalService: MyApp.Service.RadicalService, private $location: angular.ILocationService,
-            private $routeParams: ng.route.IRouteParamsService) {
+            private $routeParams: angular.route.IRouteParamsService) {
             this.radToDelete = radicalService.get($routeParams['id']);
         }
 
@@ -75,8 +50,8 @@
 
         constructor(
             private radicalService: MyApp.Service.RadicalService,
-            private $location: ng.ILocationService,
-            private $routeParams: ng.route.IRouteParamsService
+            private $location: angular.ILocationService,
+            private $routeParams: angular.route.IRouteParamsService
         ) {
             this.radToEdit = radicalService.get($routeParams['id']);
         }

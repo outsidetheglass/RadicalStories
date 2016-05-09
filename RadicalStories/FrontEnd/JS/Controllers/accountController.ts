@@ -21,7 +21,7 @@
             return this.accountService.getExternalLogins();
         }
 
-        constructor(private accountService: MyApp.Services.AccountService, private $location: ng.ILocationService) {
+        constructor(private accountService: MyApp.Services.AccountService, private $location: angular.ILocationService) {
             this.getExternalLogins().then((results) => {
                 this.externalLogins = results;
             });
@@ -43,7 +43,7 @@
             });
         }
 
-        constructor(private accountService: MyApp.Services.AccountService, private $location: ng.ILocationService) { }
+        constructor(private accountService: MyApp.Services.AccountService, private $location: angular.ILocationService) { }
     }
 
 
@@ -59,14 +59,14 @@
             });
         }
 
-        constructor(private accountService: MyApp.Services.AccountService, private $location: ng.ILocationService) { }
+        constructor(private accountService: MyApp.Services.AccountService, private $location: angular.ILocationService) { }
     }
 
 
 
     export class ExternalLoginController {
 
-        constructor($http: ng.IHttpService, private $location: ng.ILocationService, private accountService: MyApp.Services.AccountService) {
+        constructor($http: angular.IHttpService, private $location: angular.ILocationService, private accountService: MyApp.Services.AccountService) {
             // if the user is already registered then redirect home else register
             let response = accountService.parseOAuthResponse($location.hash());
             let externalAccessToken = response['access_token'];
@@ -96,7 +96,7 @@
                 });
         }
 
-        constructor(private accountService: MyApp.Services.AccountService, private $location: ng.ILocationService) {
+        constructor(private accountService: MyApp.Services.AccountService, private $location: angular.ILocationService) {
             let response = accountService.parseOAuthResponse($location.hash());
             this.externalAccessToken = response['access_token'];
         }
@@ -108,9 +108,9 @@
 
         constructor(
             private accountService: MyApp.Services.AccountService,
-            private $http: ng.IHttpService,
-            private $routeParams: ng.route.IRouteParamsService,
-            private $location: ng.ILocationService
+            private $http: angular.IHttpService,
+            private $routeParams: angular.route.IRouteParamsService,
+            private $location: angular.ILocationService
         ) {
             let userId = $routeParams['userId'];
             let code = $routeParams['code'];

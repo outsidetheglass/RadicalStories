@@ -1,0 +1,22 @@
+﻿
+<fieldset>
+    <legend>Login Locally</legend>
+    <ul>
+        <li ng-repeat="error in vm.validationMessages">
+            {{error}}
+        </li>
+    </ul>
+
+    <form novalidate name="loginForm" ng-submit="vm.login()">
+        <div>
+            <label>Email:</label>
+            <input ng-model="vm.loginUser.userName" class = "ngEmailInvalid" ng-pattern="/^[^@]+@[^@]+\.[^@]+$/" required />
+        </div>
+        <div>
+            <label>Password:</label>
+            <input ng-model="vm.loginUser.password" class="ngPasswordInvalid" ng-pattern="/^(?=.*[\W])(?=.*[a-z])(?=.*[A-Z])\S{6,}$/" required />
+        </div>
+        <input type="submit" value="Login" />
+        <a href="/register">Register</a>
+    </form>
+</fieldset>

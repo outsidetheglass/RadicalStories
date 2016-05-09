@@ -1,0 +1,27 @@
+﻿<h1>Register</h1>
+
+<fieldset>
+    <legend>Local Registration</legend>
+    <ul>
+        <li ng-repeat="message in vm.validationMessages">
+            {{message}}
+        </li>
+    </ul>
+
+    <form ng-submit="vm.register()">
+        <div>
+            <label>Email:</label>
+            <input ng-model="vm.registerUser.email" />
+        </div>
+        <div>
+            <label>Password:</label>
+            <input ng-model="vm.registerUser.password" />
+        </div>
+        <div>
+            <label>Confirm Password:</label>
+            <input ng-model="vm.registerUser.confirmPassword" />
+        </div>
+        <input type="submit" value="Register" />
+    </form>
+
+</fieldset>

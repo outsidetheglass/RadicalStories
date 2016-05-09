@@ -98,7 +98,7 @@
             });
         }
 
-        getExternalLogins(): ng.IPromise<{}> {
+        getExternalLogins(): angular.IPromise<{}> {
             return this.$q((resolve, reject) => {
                 let url = `api/Account/ExternalLogins?returnUrl=%2FexternalLogin&generateState=true`;
                 this.$http.get(url).then((result: any) => {
@@ -110,7 +110,7 @@
         }
 
 
-        confirmEmail(userId, code): ng.IPromise<{}> {
+        confirmEmail(userId, code): angular.IPromise<{}> {
             return this.$q((resolve, reject) => {
                 let data = {
                     userId: userId,
@@ -137,9 +137,9 @@
 
         constructor
             (
-            private $q: ng.IQService,
-            private $http: ng.IHttpService,
-            private $window: ng.IWindowService
+            private $q: angular.IQService,
+            private $http: angular.IHttpService,
+            private $window: angular.IWindowService
             ) { }
 
     }

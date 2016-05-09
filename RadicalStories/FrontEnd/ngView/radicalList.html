@@ -1,0 +1,43 @@
+﻿
+
+<div class="row">
+    <div class="col-md-12">
+        <h1><u>Radical Page</u></h1>
+        <h1>{{vm.radicals.symbol}} {{vm.radicals.symbolVariations}}</h1>
+    </div>
+</div>
+<div class="row radicalPage">
+    <div class="col-md-7 col-md-offset-3">
+
+        <p>
+            <h4>Pronunciation:</h4>
+            {{vm.radicals.pinyin}}
+            <br />
+            <button ng-click="vm.playZh()">Play Native Pronunciation</button>
+        </p>
+
+        <p>
+            <h4>Meaning:</h4>
+            {{vm.radicals.meaning}}
+        </p>
+
+        <p>
+            <h4> Stroke Number:</h4>
+            {{vm.radicals.strokesNum}}
+        </p>
+
+        <!--<p>
+            <a href="/delete/{{vm.radicals.id}}">Delete</a>
+            or
+            <a href="/edit/{{vm.radicals.id}}">Edit</a>
+        </p>-->
+
+        <p>
+            <canvas ng-hide="vm.available()" width="200" height="200" id="myCanvas"></canvas>
+            <h5 ng-show="vm.available()" id="unavailable">Drawing not available <br />for this character</h5>
+            <button ng-hide="vm.available()" ng-click="vm.method()">Animate Radical</button>
+        </p>
+        <p><a href="http://forvo.com/">Pronunciations by Forvo</a></p>
+
+    </div>
+</div>

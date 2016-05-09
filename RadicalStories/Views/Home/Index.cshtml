@@ -8,14 +8,14 @@
     <ul class="container nav nav-tabs">
         <li><a href="/index">Home</a></li>
         <li><a href="/categories">Categories</a></li>
-        <li><a href="/add" ng-show="account.getClaim('CanAddRadicals')">Add</a></li>
+        <li><a href="/lyrics/1">Lyrics</a></li>
+        @*<li><a href="/add" ng-show="account.getClaim('CanAddRadicals')">Add</a></li>
         <li><a href="/login" ng-show="!account.isLoggedIn()">Login</a></li>
-        <li><a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a></li>
+        <li><a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a></li>*@
     </ul>
 
     <div ng-view class="ngViewContainer"></div>
-
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery-2.2.3.js"></script>
     <script src="~/Scripts/angular.min.js"></script>
     <script src="~/Scripts/angular-animate.min.js"></script>
     <script src="~/FrontEnd/JS/Controllers/animationsCtrl.js"></script>
@@ -26,7 +26,10 @@
     <script src="~/FrontEnd/JS/Services/accountService.js"></script>
     <script src="~/FrontEnd/JS/Services/RadicalService.js"></script>
     <script src="~/FrontEnd/JS/Controllers/MainController.js"></script>
+    <script src="~/FrontEnd/JS/Controllers/drawRadicalsController.js"></script>
+    <script src="~/FrontEnd/JS/Controllers/lyricsController.js"></script>
     <script src="~/FrontEnd/JS/Controllers/controllers.js"></script>
-
+    <script src="~/FrontEnd/JS/Directives/Directive.js"></script>
+    <script src="~/FrontEnd/JS/drawRad.js"></script>
 </body>
 </html>

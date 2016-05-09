@@ -1,11 +1,9 @@
 ﻿namespace MyApp {
     angular.module("MyApp", ["ngRoute", "ngResource", "ngAnimate"])
-        .config(($routeProvider: ng.route.IRouteProvider, $locationProvider: ng.ILocationProvider) => {
+        .config(($routeProvider: angular.route.IRouteProvider, $locationProvider: angular.ILocationProvider) => {
             $routeProvider
                 .when("/", {
                     templateUrl: "/FrontEnd/ngView/index.html",
-                    controller: MyApp.Controllers.AccountController,
-                    controllerAs: 'vm'
                 })
                 .when("/delete/:id", {
                     templateUrl: "/FrontEnd/ngView/delete.html",
@@ -15,6 +13,11 @@
                 .when("/edit/:id", {
                     templateUrl: "/FrontEnd/ngView/editRad.html",
                     controller: MyApp.RadicalEditController,
+                    controllerAs: 'vm'
+                })
+                .when("/lyrics", {
+                    templateUrl: "/FrontEnd/ngView/lyrics.html",
+                    controller: MyApp.LyricsController,
                     controllerAs: 'vm'
                 })
                 .when("/categories", {
@@ -39,7 +42,7 @@
                 })
                 .when("/radicalList/:id", {
                     templateUrl: "/FrontEnd/ngView/radicalList.html",
-                    controller: MyApp.RadicalListController,
+                    controller: MyApp.DrawRads,
                     controllerAs: 'vm'
                 })
                 .otherwise("/");

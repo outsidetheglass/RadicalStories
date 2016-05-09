@@ -7,4 +7,3 @@ var app;
     })();
     angular.module("MyApp").controller("HomeController", HomeController);
 })(app || (app = {}));
-//# sourceMappingURL=HomeController.js.map

@@ -1,0 +1,14 @@
+﻿<div class="row">
+    <div class="col-md-12">{{strokes}}</div>
+</div>
+<div class="row">
+    <div class="col-md-2" ng-if="cate.strokesNum==strokes" ng-repeat="cate in radicals">
+
+            <a href="/radicalList/{{cate.id}}">
+                {{cate.symbol}}
+            </a>
+
+    </div>
+    <div class="col-md-2"></div>
+</div>
+<br />

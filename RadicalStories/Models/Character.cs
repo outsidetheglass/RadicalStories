@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
-namespace RadicalStories.Models
-{
+namespace RadicalStories.Models {
     public class Radical
     {
+        /*public Radical() {
+            this.Lines = new List<decimal>();
+        }*/
         public int Id { get; set; }
         public string Pinyin { get; set; }
         [Required(ErrorMessage = "Must insert a chinese character.")]
@@ -17,6 +16,6 @@ namespace RadicalStories.Models
         public string SymbolVariations { get; set; }
         public string Meaning { get; set; }
         public int StrokesNum { get; set; }
-
+        public Dictionary<int, Lines<List<decimal>>> Lines { get; set; }
     }
 }
